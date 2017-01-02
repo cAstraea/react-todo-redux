@@ -25,9 +25,7 @@ module.exports = {
         let filteredTodos = todos;
         //filter by showCompleted
 
-        filteredTodos = filteredTodos.filter((todo) => {
-            return !todo.completed || showCompleted; // return completed items
-        });
+        filteredTodos = filteredTodos.filter((todo) => (!todo.completed || showCompleted)); // return completed items
 
         //filter by searchText
          filteredTodos = filteredTodos.filter((todo) => {
