@@ -17,12 +17,13 @@ const Todo = React.createClass({
     };
     return (
       <div className={todoClassName} onClick={() => { this.props.onToggle(id); }}>
-      
-       <div> <input type="checkbox" checked={completed} /> </div>
-     
-     <div><p> {text} </p></div>
-        
-       <div className="todo__subtext"> <p> {renderDate()} </p> </div> 
+        <div>
+          <input type="checkbox" checked={completed} />
+        </div>
+        <div>
+          <p>{text}</p>
+          <p className="todo__subtext">{renderDate()}</p>
+        </div>
       </div>
     );
   }
