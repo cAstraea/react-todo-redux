@@ -26,5 +26,40 @@ describe('Reducers', () => {
 
             expect(res).toBe(true);
         });
-    });    
+    });   
+
+    describe('todosReducer', () => {
+        it('should add new todo', () => {
+            const action = {
+                type: 'ADD_TODO',
+                text: 'new todo'
+            };
+    //call reducerwith current state and action     `
+            const res = reducers.todosReducer(df([]), df(action)); 
+
+            expect(res.length).toEqual(1); // array has been updated
+
+            expect(res[0].text).toEqual(action.text); //assert that text was set for first element in the array
+        });
+
+        it('should toggle todo', () => {           
+        const todoData = [{ 
+      id: 11,
+      text: 'test feature',
+      completed: true,
+      createdAt: 123,
+      completedAt: 129
+        }];
+        
+        const action = {
+            type: 'TOGGLE_TODO',
+            id: 11
+        };
+
+        const res = reducers.todosReducer(df(todoData), df(action));
+
+        expect(res[0].completed).toEqual(false);
+         expect(res[0].completedAt).toEqual(undefined);
+        });
+    });
 });
