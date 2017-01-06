@@ -12,6 +12,12 @@ export const addTodo = (text) => {
     };
 };
 
+export const removeTodo = (id) => {
+    return {
+        type: 'DELETE_TODO'
+    };
+};
+
 //toggle show completed
 export const toggleShow = () => {
     return {

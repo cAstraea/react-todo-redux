@@ -33,6 +33,11 @@ const TodoApp = React.createClass({
     this.setState({ todos: updatedTodos });
   },
 
+  handleDelete(id) {
+    const statenew = this.state.todos.filter(todo => todo.id !== id);
+      this.setState({ todos: statenew });
+  },
+
   handleAddTodo(text) {
     this.setState({
       todos: [
@@ -66,7 +71,7 @@ const TodoApp = React.createClass({
           <div className="column small-centered small-11 medium-6 large-5">
           <div className="container">
             <TodoSearch onSearch={this.handleSearch} />
-            <TodoList todos={filteredTodos} onToggle={this.handleToggle} />
+            <TodoList todos={filteredTodos} onToggle={this.handleToggle} onDelete={this.handleDelete} />
             <AddTodo onAddTodo={this.handleAddTodo} />
           </div>
           </div>

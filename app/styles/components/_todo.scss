@@ -1,7 +1,10 @@
+.am-delete {
+}
 .todo {
   align-items: center;
   cursor: pointer;
   display: flex;
+  z-index: -1;
   padding: 1rem;
   transition: background .3s ease;
 
@@ -31,3 +34,5 @@
     text-decoration: line-through;
   }
 }
+
+

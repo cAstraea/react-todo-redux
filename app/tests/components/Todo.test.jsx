@@ -21,8 +21,8 @@ describe('Todo', () => {
 
     const todo = TestUtils.renderIntoDocument(<Todo {...todoData} onToggle={spy} />);
 
-    const $el = $(ReactDOM.findDOMNode(todo)); 
-
+    const $el = $(ReactDOM.findDOMNode(todo)).children().eq(1); 
+    
     TestUtils.Simulate.click($el[0]);
 
     expect(spy).toHaveBeenCalledWith(199);

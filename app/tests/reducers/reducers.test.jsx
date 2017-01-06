@@ -21,7 +21,7 @@ describe('Reducers', () => {
             const action = {
                 type: 'TOGGLE_SHOW_COMPLETED'
             };
-    //call reducerwith current state and action     `
+    //call reducerwith current state and action
             const res = reducers.showCompletedReducer(df(false), df(action)); 
 
             expect(res).toBe(true);
@@ -40,6 +40,31 @@ describe('Reducers', () => {
             expect(res.length).toEqual(1); // array has been updated
 
             expect(res[0].text).toEqual(action.text); //assert that text was set for first element in the array
+        });
+
+        it('should delete todo', () => {
+        const todoData = [{ 
+            id: 11,
+            text: 'test feature',
+            completed: true,
+            createdAt: 123,
+            completedAt: 129 },
+            {
+                id: 55,
+            text: 'test feature 2',
+            completed: false,
+            createdAt: 123,
+            completedAt: 129  
+            }
+            ];
+
+            const action = {
+            type: 'DELETE_TODO',
+            id: 55
+        };
+         const res = reducers.todosReducer(df(todoData), df(action));
+
+         expect(res.length).toBe(1);
         });
 
         it('should toggle todo', () => {           
