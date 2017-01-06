@@ -1,3 +1,7 @@
+body {
+  background: #648880;
+  background: linear-gradient(to bottom, #f6f1d3, #648880 85%, #293f50);
+}
 .container {
   background: $light-grey;
   border: 1px solid $light-grey-border;
