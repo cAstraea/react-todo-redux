@@ -30,6 +30,7 @@ module.exports = {
         //filter by searchText
          filteredTodos = filteredTodos.filter((todo) => {
              const text = todo.text.toLowerCase();
+             searchText = searchText.toLowerCase();
              return searchText.lenght === 0 || text.indexOf(searchText) > -1;   //returns all if empty or filtered items
         });
 
