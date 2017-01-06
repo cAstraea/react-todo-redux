@@ -14,7 +14,8 @@ export const addTodo = (text) => {
 
 export const removeTodo = (id) => {
     return {
-        type: 'DELETE_TODO'
+        type: 'DELETE_TODO',
+        id
     };
 };
 
