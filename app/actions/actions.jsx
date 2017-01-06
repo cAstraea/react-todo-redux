@@ -12,6 +12,13 @@ export const addTodo = (text) => {
     };
 };
 
+export var addTodos = (todos) => {
+    return {
+        type: 'ADD_TODOS',
+        todos
+    };
+};
+
 export const removeTodo = (id) => {
     return {
         type: 'DELETE_TODO',
