@@ -12,7 +12,7 @@ export const addTodo = (text) => {
     };
 };
 
-export var addTodos = (todos) => {
+export const addTodos = (todos) => {
     return {
         type: 'ADD_TODOS',
         todos

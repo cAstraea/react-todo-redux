@@ -42,6 +42,24 @@ describe('Reducers', () => {
             expect(res[0].text).toEqual(action.text); //assert that text was set for first element in the array
         });
 
+           it('should add new todo', () => {
+             const todos = [{
+                id: 333,
+                text: 'test text',
+                completed: false,
+                completedAt: undefined,
+                createdAt: 33000
+            }];
+
+            const action = {
+                type: 'ADD_TODOS',
+                todos
+            };
+            const res = reducers.todosReducer(df([]), df(action));
+            expect(res.length).toEqual(1);
+            expect(res[0]).toEqual(todos[0]);      
+           });
+        
         it('should delete todo', () => {
         const todoData = [{ 
             id: 11,
