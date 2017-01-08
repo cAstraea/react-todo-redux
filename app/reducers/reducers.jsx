@@ -45,7 +45,7 @@ export const todosReducer = (state = [], action) => {
       });
     case 'DELETE_TODO':    
        return state.filter(todo => todo.id !== action.id);
-      // debugger;
+
 
     default:
       return state;  
