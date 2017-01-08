@@ -3,3 +3,4 @@ node_modules/
 .vscode/
 pg/
 public/bundle.js
+config/
