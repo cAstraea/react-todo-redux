@@ -21,7 +21,7 @@ export const Todo = React.createClass({
     return (
       <div className="callout clearfix">
       <div><button className="button alert float-right am-delete" onClick={() => { dispatch(actions.removeTodo(id)); }}> ✘	</button></div>
-      <div className={todoClassName} onClick={() => { dispatch(actions.toggleTodo(id)); }}>
+      <div className={todoClassName} onClick={() => { dispatch(actions.startToggleTodo(id, !completed)); }}>
   
 
         <div>

@@ -1,7 +1,9 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import firebase, {firebaseRef} from 'app/firebase'
 
 const expect = require('expect');
+
 const actions = require('actions');
 
 const createMockStore = configureMockStore([thunk]); //generate mock store
@@ -76,13 +78,56 @@ describe('Actions', () => {
         expect(res).toEqual(action);
     });
 
-        it('should generate toggle todo action', () => {
+        it('should generate update todo action', () => {
         const action = {
-            type: 'TOGGLE_TODO',
-            id: 42
+            type: 'UPDATE_TODO',
+            id: 42,
+            updates: { completed: false }
         };
-        const res = actions.toggleTodo(action.id);
+        const res = actions.updateTodo(action.id, action.updates);
 
         expect(res).toEqual(action);
     });
+
+    describe('Tests with firebase todos', () => {
+        let testTodoRef;
+        beforeEach((done) => {
+            //new todo item
+            testTodoRef = firebaseRef.child('todos').push();
+        testTodoRef.set({
+            text: 'something to do test',
+            completed: false,
+            createdAt: 32423432
+        }).then(() => done()); //end before each
+        });
+
+        afterEach((done) => {
+            //remove the todo created in before each
+            testTodoRef.remove().then(() => done());
+        });
+
+        it('should toggle todo and dispatch UPDATE_TODO action', (done) => {
+            const store = createMockStore({});
+
+            const action = actions.startToggleTodo(testTodoRef.key, true);
+
+            store.dispatch(action).then(() => {
+                const mockActions = store.getActions(); 
+
+                expect(mockActions[0]).toInclude({
+                    type: 'UPDATE_TODO',
+                    id: testTodoRef.key
+                });
+
+                expect(mockActions[0].updates).toInclude({
+                    completed: true
+                });
+
+                expect(mockActions[0].updates.completedAt).toExist();
+                
+                done();
+            }, done);
+        });
+    });
 });
+

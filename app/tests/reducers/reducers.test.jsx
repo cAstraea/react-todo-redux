@@ -90,7 +90,7 @@ describe('Reducers', () => {
          expect(res.length).toBe(1);
         });
 
-        it('should toggle todo', () => {           
+        it('should update todo', () => {           
         const todoData = [{ 
       id: 11,
       text: 'test feature',
@@ -98,16 +98,21 @@ describe('Reducers', () => {
       createdAt: 123,
       completedAt: 129
         }];
-        
+        const updates = {
+            completed: false,
+            completedAt: null
+        };
         const action = {
-            type: 'TOGGLE_TODO',
-            id: 11
+            type: 'UPDATE_TODO',
+            id: todoData[0].id,
+            updates
         };
 
         const res = reducers.todosReducer(df(todoData), df(action));
 
-        expect(res[0].completed).toEqual(false);
-         expect(res[0].completedAt).toEqual(undefined);
+        expect(res[0].completed).toEqual(updates.completed);
+         expect(res[0].completedAt).toEqual(updates.completedAt);
+         expect(res[0].text).toEqual(todoData[0].text);
         });
     });
 });
