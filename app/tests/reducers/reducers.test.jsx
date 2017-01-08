@@ -32,17 +32,22 @@ describe('Reducers', () => {
         it('should add new todo', () => {
             const action = {
                 type: 'ADD_TODO',
-                text: 'new todo'
+                todo: {
+                    id: 'asd231',
+                    text: 'something to od',
+                    completed: false,
+                    createdAt: 324234
+                    }
             };
     //call reducerwith current state and action     `
             const res = reducers.todosReducer(df([]), df(action)); 
 
             expect(res.length).toEqual(1); // array has been updated
 
-            expect(res[0].text).toEqual(action.text); //assert that text was set for first element in the array
+            expect(res[0]).toEqual(action.todo); //assert that text was set for first element in the array
         });
 
-           it('should add new todo', () => {
+           it('should add new todos', () => {
              const todos = [{
                 id: 333,
                 text: 'test text',

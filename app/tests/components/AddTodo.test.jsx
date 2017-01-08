@@ -1,3 +1,5 @@
+import * as actions from 'actions';
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 const TestUtils = require('react-addons-test-utils');
@@ -14,10 +16,7 @@ describe('Add Todo', () => {
   it('Should dispatch ADD_TODO when valid todo text', () => {
       const todoText = 'Check mail';
 
-      const action = {
-        type: 'ADD_TODO',
-        text: todoText
-      };
+      const action = actions.startAddTodo(todoText);
       //create spy 
       const spy = expect.createSpy();
 

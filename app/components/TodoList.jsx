@@ -11,10 +11,11 @@ export const TodoList = React.createClass({
     const { todos, showCompleted, searchText } = this.props;
     
     const renderTodos = () => {
-       if (todos.length === 0) {
-         return (<p className="container__message">Nothing to do</p>);
+      const filteredTodos = TodoAPI.filteredTodos(todos, showCompleted, searchText);
+       if (filteredTodos.length === 0) {
+         return (<p className="container__message">Nothing to do, Add more todos</p>);
        }
-      return (TodoAPI.filteredTodos(todos, showCompleted, searchText).map((todo) => (<Todo key={todo.id} {...todo} />)));   
+        return filteredTodos.map((todo) => <Todo key={todo.id} {...todo} />);
      };
 
     return (
