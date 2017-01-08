@@ -9,6 +9,7 @@ export const Login = React.createClass({
         const { dispatch } = this.props;
         dispatch(actions.startLogin());
     },
+    
     render() {
         return (
             <div><h1 className="page-title"> Todo App TEST</h1>
