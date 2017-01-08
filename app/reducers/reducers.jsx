@@ -46,6 +46,8 @@ export const todosReducer = (state = [], action) => {
     case 'DELETE_TODO':    
        return state.filter(todo => todo.id !== action.id);
 
+    case 'DELETE_TODOS':    
+       return state.filter(todo => todo.id !== action.id);
 
     default:
       return state;  
