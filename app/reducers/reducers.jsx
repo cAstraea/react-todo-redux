@@ -28,6 +28,8 @@ export const todosReducer = (state = [], action) => {
         ...state,
         action.todo
       ];
+    case 'LOGOUT':
+      return [];
     case 'ADD_TODOS':
     return [
       ...state,
@@ -58,7 +60,7 @@ export const authReducer = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
-        uid : action.uid
+        uid: action.uid
       };
     case 'LOGOUT':
     return {};
